@@ -58,9 +58,13 @@ p {
   background-color: #4CAF50;
   color: white;
 }
+ p {
+    font-family: "Times New Roman", Times, serif;
+  }
 </style>
   </head>
   <body>
+ 
     <div class="topnav">
   <a class="active" href="index.html">Design</a>
  
@@ -88,17 +92,25 @@ p {
 
             <p><a href="https://iwpr.org/wp-content/uploads/2017/09/C460_8.21.17_Single-Mothers-Briefing-Paper-FINAL-2.pdf">This website statistically mentions about the overall increase of 'young moms'</a></p>
 
+            <h2>A solution?</h2>
+
             <p>Therefore they need someone else to take care of their children so that they wouldn't have to worry about them too much. This is where a childcare centre comes in! We know that their job is to take care of other people's children until they return from work.</p>
 
              <p class="aligncenter">
               <img src="https://lh3.googleusercontent.com/-NFvCAbAx6m8/W-DW68GaaxI/AAAAAAAAA2U/Pi-HxXBFCtc-aX1gCVb09B7wI3E3U5hGwCJoC/w1325-h1020-n-rw/childrencare.png" alt="photo missing" width="600" height="500"></p>
 
               <p>A rectangle in the middle represents <b>the Childcare Centre</b>, the squares with the roofs are <b>houses</b>, and the black rectangles are <b>workplaces / Universities</b>. The arrows represent the routines of the parents and their children, from houlsehold to the centre, and then to work.</p>
+
+              <p class="aligncenter">
+              <img src="https://i.imgflip.com/z3168.jpg" width="370" height="370">
+              <img src="http://www.no42architects.com.au/wp-content/uploads/2018/05/plus-math.png" width="370" height="370">
+              <img src="https://blog-cdn.touringplans.com/wp-content/uploads/2016/07/MeetMickey1.jpg" width="370" height="370"></p>
+
               <h2>The location</h2>
 
           	<div id='map' style='width: 100%; height: 400px; margin-left: 10px;'></div>
           	<script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoia2lldmNocmlzIiwiYSI6ImNqbG9nbXR2aDF0cnIzcm4zNHhmMDEwMzIifQ.3XscKFBNmlEMolvAZ0rxMA';
+mapboxgl.accessToken = 'pk.eyJ1Ijoia2lldmNocmlzIiwiYSI6ImNqbzliOWdlYjFjcW0zcHB1MWxvZzFtNm4ifQ.1UY96v-sWbCGLxEgj6_Sew';
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v9',
@@ -110,13 +122,16 @@ var map = new mapboxgl.Map({
 
 map.on('load', function() {
     map.addLayer({
-        'id': 'data',
+        'id': 'room-extrusion',
         'type': 'fill-extrusion',
         'source': {
             // GeoJSON Data source used in vector tiles, documented at
             // https://gist.github.com/ryanbaumann/a7d970386ce59d11c16278b90dde094d
             'type': 'geojson',
             'data': './as3.geojson'
+        },
+        'layout': {
+          'visibility': 'visible'
         },
         'paint': {
              'fill-extrusion-color' : {
@@ -149,7 +164,7 @@ map.on('load', function() {
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8JV4IJ218F3aIfmbvXOf9AHDTma73pfgSvvMepJT_shl1Kb5MjQ" width="300" height="300">
 </p>
 
-<p>I liked the roof structures of certain buildings like the one above.</p>
+<p>I referred to the roof structures of certain buildings like the one above.</p>
 
 <p class='aligncenter'>
 <img src="https://lh3.googleusercontent.com/-toG9mAvnPcw/W-FK7LRtzSI/AAAAAAAAA3o/G5O_4ri6NzYTTBp9cIJZmt2mbgZdT9yXACL0BGAs/w1325-d-h1350-n-rw/src2.JPG" width="300" height="300">
