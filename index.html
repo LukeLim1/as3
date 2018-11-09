@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset='utf-8' />
+    <meta name='viewport' content=initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
+    <script src='./as3.geojson'></script>
+   
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; float: center; }
+      #map { width: 50%; height: 400px; float: left; }
+      
+       
+    </style>
+    <title>A Childcare Centre</title>
+    
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+    <style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+  margin-left: 15px;
+}
+
+.aligncenter {
+  text-align: center;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+ p {
+    font-family: "Times New Roman", Times, serif;
+  }
+</style>
+  </head>
+  <body>
+ 
+    <div class="topnav">
+  <a class="active" href="index.html">Design</a>
+ 
+</div>
+
+    
+    <header class="masthead" style="background-image: url('https://cdn.shopify.com/s/files/1/1394/6561/products/SUPERIOR-PAPER-BACK-PAPER-MINT-GREEN-2.75M-BY-11M_7db45b89-63bd-4a0c-b0ee-a48d42dd6590_1024x1024.jpg?v=1486453285')">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>What's a solution for an increase of a 'young mom'?</h1>
+              <h2 class="subheading">Luke Lim z5210599</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+          	<h2 class="section-heading">A Childcare Centre</h2>
+          	<p>From the last assessment, where I had to research about the number of children from different age groups of parents, I made a conclusion that the number of children born in NSW is increasing overall no matter what the age group of their mother is. This could be problematic in some ways, because that means the students enrolled in University might have children as well. It is most likely that those students wouldn't be able to focus on their studies fully while taking care of their child.</p>
+
+            <p><a href="https://iwpr.org/wp-content/uploads/2017/09/C460_8.21.17_Single-Mothers-Briefing-Paper-FINAL-2.pdf">This website statistically mentions about the overall increase of 'young moms'</a></p>
+
+            <h2>A solution?</h2>
+
+            <p>Therefore they need someone else to take care of their children so that they wouldn't have to worry about them too much. This is where a childcare centre comes in! We know that their job is to take care of other people's children until they return from work.</p>
+
+             <p class="aligncenter">
+              <img src="https://lh3.googleusercontent.com/-NFvCAbAx6m8/W-DW68GaaxI/AAAAAAAAA2U/Pi-HxXBFCtc-aX1gCVb09B7wI3E3U5hGwCJoC/w1325-h1020-n-rw/childrencare.png" alt="photo missing" width="600" height="500"></p>
+
+              <p>A rectangle in the middle represents <b>the Childcare Centre</b>, the squares with the roofs are <b>houses</b>, and the black rectangles are <b>workplaces / Universities</b>. The arrows represent the routines of the parents and their children, from houlsehold to the centre, and then to work.</p>
+
+              <p class="aligncenter">
+              <img src="https://i.imgflip.com/z3168.jpg" width="370" height="370">
+              <img src="http://www.no42architects.com.au/wp-content/uploads/2018/05/plus-math.png" width="370" height="370">
+              <img src="https://blog-cdn.touringplans.com/wp-content/uploads/2016/07/MeetMickey1.jpg" width="370" height="370"></p>
+
+              <h2>The location</h2>
+
+          	<div id='map' style='width: 100%; height: 400px; margin-left: 10px;'></div>
+          	<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoia2lldmNocmlzIiwiYSI6ImNqbzliOWdlYjFjcW0zcHB1MWxvZzFtNm4ifQ.1UY96v-sWbCGLxEgj6_Sew';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [142, -30],
+    zoom: 5,
+    pitch: 40,
+    bearing: 20
+});
+
+map.on('load', function() {
+    map.addLayer({
+        'id': 'room-extrusion',
+        'type': 'fill-extrusion',
+        'source': {
+            // GeoJSON Data source used in vector tiles, documented at
+            // https://gist.github.com/ryanbaumann/a7d970386ce59d11c16278b90dde094d
+            'type': 'geojson',
+            'data': './as3.geojson'
+        },
+        'layout': {
+          'visibility': 'visible'
+        },
+        'paint': {
+             'fill-extrusion-color' : {
+                    'property': 'colour',
+                    'type': 'identity'
+                },
+                'fill-extrusion-height' : {
+                    'type': 'identity',
+                    'property': 'height'
+                },
+                'fill-extrusion-base' : {
+                    'type': 'identity',
+                    'property': 'base_height'
+                },
+                 'fill-extrusion-opacity': 1
+
+        }
+    });
+});
+</script>
+
+<p>The centre is built close to University of New South Wales, next to a Barker Street Carpark. It is good for the centre to be close to the University so that the students wouldn't have to spend much time bringing their children there.</p>
+
+<p>For the design, I took some sculptures of the architect Antoni Gaudi as a reference, and partially from Disney Castle. Who would dislike Disney when they're so young and filled with curiousity? Gaudi's sculptures were very castle-like in a realistic aspect, and they have some creative features which I can definitely refer to.</p>
+
+<h2>The perspectives</h2>
+
+<p class='aligncenter'>
+<img src="https://lh3.googleusercontent.com/-87ajKrV-Pww/W-FCbAxzXzI/AAAAAAAAA2w/p47HE_qVC3EAxVhb3RjTBrpsSBzfeXYTgCL0BGAs/w1325-d-h1465-n-rw/src1.JPG" width="300" height="300">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8JV4IJ218F3aIfmbvXOf9AHDTma73pfgSvvMepJT_shl1Kb5MjQ" width="300" height="300">
+</p>
+
+<p>I referred to the roof structures of certain buildings like the one above.</p>
+
+<p class='aligncenter'>
+<img src="https://lh3.googleusercontent.com/-toG9mAvnPcw/W-FK7LRtzSI/AAAAAAAAA3o/G5O_4ri6NzYTTBp9cIJZmt2mbgZdT9yXACL0BGAs/w1325-d-h1350-n-rw/src2.JPG" width="300" height="300">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Sagrada_Familia_01.jpg/330px-Sagrada_Familia_01.jpg" width="300" height="300">
+</p>
+
+<p>But the best sculpture to refer to was 'Sagrada Familia', though it still hasn't been built yet. It has the most castle-like design and it is one of the most remarkable architectures in this world. Its amuzing size and looks would definitely assist children to have great time in the centre.</p>
+
+<h2>References</h2>
+<p>This time I only have few sources to refer to, so I haven't created a separate link for references.</p>
+
+<p class="aligncenter"><a href="https://iwpr.org/wp-content/uploads/2017/09/C460_8.21.17_Single-Mothers-Briefing-Paper-FINAL-2.pdf">Statistic analysis of increase of 'young moms'</a></p>
+
+<p class="aligncenter"><a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8JV4IJ218F3aIfmbvXOf9AHDTma73pfgSvvMepJT_shl1Kb5MjQ">Sculpture of Antoni Gaudi</a></p>
+
+<p class="aligncenter"><a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Sagrada_Familia_01.jpg/330px-Sagrada_Familia_01.jpg">Sagrada Familia</a></p>
+
+</div></div></div></article></body></html>
